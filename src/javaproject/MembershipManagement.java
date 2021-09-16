@@ -52,7 +52,7 @@ public class MembershipManagement {
         double fees;
         int memberID;
         Member mbr;
-        Calculator<Integer> cal;
+        Calculator<Integer> calc;
         System.out.print("Please enter your name: ");
         name = reader.nextLine();
         printClubOptions();
@@ -67,23 +67,23 @@ public class MembershipManagement {
         } else memberID = 1;
 
         if (club != 4) {
-            cal = (n) -> switch (n) {
+            calc = (n) -> switch (n) {
                 case 1 -> 900;
                 case 2 -> 950;
                 case 3 -> 1000;
                 default -> -1;
             };
-            fees = cal.calculateFees(club);
+            fees = calc.calculateFees(club);
             mbr = new SingleClubMember('S', memberID, name, fees, club);
             m.add(mbr);
             mem = mbr.toString();
             System.out.println("\nSTATUS: Single Club Member added\n");
         } else {
-            cal = (n) -> switch (n) {
+            calc = (n) -> switch (n) {
                 case 4 -> 1200;
                 default -> -1;
             };
-            fees = cal.calculateFees(club);
+            fees = calc.calculateFees(club);
             mbr = new MultiClubMember('M', memberID, name, fees, 100);
             m.add(mbr);
             mem = mbr.toString();
